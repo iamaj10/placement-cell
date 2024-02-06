@@ -1,0 +1,11 @@
+{
+  "name": "placement_cell",
+  "version": "1.0.0",
+  "description": "A dashboard where to keep track of students and interviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iamaj",
+  "license": "ISC"
+}
