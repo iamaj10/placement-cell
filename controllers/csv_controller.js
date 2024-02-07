@@ -51,7 +51,7 @@ module.exports.downloadCSVReport = async function (req, res) {
             return res.redirect("back");
           } else {
             console.log(`File created: ${filePath}`);
-            req.flash("success", "Successfully downloaded CSV report!");
+            // req.flash("success", "Successfully downloaded CSV report!");
             return res.download(filePath);
           }
         });
@@ -62,7 +62,7 @@ module.exports.downloadCSVReport = async function (req, res) {
             console.log(err);
             return res.redirect("back");
           }
-          req.flash("success", "Successfully downloaded CSV report!");
+          // req.flash("success", "Successfully downloaded CSV report!");
           return res.download(filePath);
         });
       }
