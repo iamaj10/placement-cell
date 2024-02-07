@@ -1,6 +1,5 @@
 const Student = require("../models/student");
 const fs = require("fs");
-// const path = require("path");
 
 module.exports.downloadCSVReport = async function (req, res) {
   try {
@@ -46,9 +45,10 @@ module.exports.downloadCSVReport = async function (req, res) {
     fs.access(filePath, fs.constants.F_OK, (err) => {
       if (err) {
         // File doesn't exist, create it.
-        fs.writeFile(filePath, report, (err) => {
+        const csvFile = fs.writeFile(filePath, report, (err) => {
           if (err) {
             console.error(`Error creating file: ${err}`);
+            return res.redirect("back");
           } else {
             console.log(`File created: ${filePath}`);
             req.flash("success", "Successfully downloaded CSV report!");
@@ -57,7 +57,7 @@ module.exports.downloadCSVReport = async function (req, res) {
         });
       } else {
         // File exists, proceed with writing.
-        const csvFile = fs.writeFile(filePath, report, function (err, data) {
+        const csvFile = fs.writeFile(filePath, report, (err, data) => {
           if (err) {
             console.log(err);
             return res.redirect("back");
