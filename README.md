@@ -6,7 +6,7 @@ A dashboard to keep track of students and interviews and download student data a
 
 ## 🧑‍💻 Getting started
 
-- Clone the forked repository in your local system
+- Clone the repository in your local system
 - Change the db and session key as required
 - Install all required packages
 
