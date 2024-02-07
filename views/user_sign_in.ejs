@@ -1,0 +1,33 @@
+<div class="container mt-4 col-md-4">
+  <h1 class="text-center">Sign In</h1>
+  <form
+    method="POST"
+    action="/create-session"
+    class="mt-2 px-3 pt-5"
+    style="--bs-border-opacity: 0.5"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        name="email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+
+  <p class="ms-3"><a href="/sign-up">Create an account</a></p>
+</div>
