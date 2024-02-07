@@ -40,10 +40,10 @@ module.exports.create = async (req, res) => {
       email,
       batch,
       college,
-      placementStatus,
-      dsaScore,
-      reactScore,
-      webdevScore,
+      placement_status,
+      dsa_score,
+      react_score,
+      webdev_score,
     } = req.body;
 
     // Check if the student already exists
@@ -56,10 +56,10 @@ module.exports.create = async (req, res) => {
         email,
         college,
         batch,
-        dsaScore,
-        reactScore,
-        webdevScore,
-        placementStatus,
+        dsa_score,
+        react_score,
+        webdev_score,
+        placement_status,
       });
 
       req.flash("success", "Student added!");

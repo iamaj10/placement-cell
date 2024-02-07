@@ -17,20 +17,20 @@ module.exports.create = async (req, res) => {
   try {
     const { company, date } = req.body;
 
-    await Interview.create(
-      {
-        company,
-        date,
-      },
-      (err, Interview) => {
-        if (err) {
-          req.flash("error", "Couldn't add Interview!");
-          return res.redirect("back");
-        }
-        req.flash("success", "Interview added!");
-        return res.redirect("back");
-      }
-    );
+    await Interview.create({
+      company,
+      date,
+    });
+    // (err, Interview) => {
+    //   if (err) {
+    //     req.flash("error", "Couldn't add Interview!");
+    //     return res.redirect("back");
+    //   }
+    //   req.flash("success", "Interview added!");
+    //   return res.redirect("back");
+    // }
+    req.flash("success", "Interview added!");
+    return res.redirect("back");
   } catch (err) {
     console.log(err);
   }
