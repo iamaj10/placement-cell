@@ -47,7 +47,7 @@ module.exports.downloadCSVReport = async function (req, res) {
       function (err, data) {
         if (err) {
           console.log(err);
-          return res.redirct("back");
+          return res.redirect("back");
         }
         req.flash("success", "successfully downloaded CSV report!");
         return res.download("uploads/studentsReport.csv");
