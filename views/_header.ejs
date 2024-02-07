@@ -1,0 +1,43 @@
+<header>
+  <nav class="navbar navbar-expand-lg" style="background-color: #dbfcfa">
+    <div class="container-fluid">
+      <a class="navbar-brand h1 text-uppercase" href="/dashboard">
+        <i class="fa-solid fa-earth-americas"></i> Placement Cell</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
+        <% if (locals.user) {%>
+
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text" id="dashboard-link" href="/dashboard"><span class="text-dark fw-bold"><i class="fa-solid fa-table-columns me-2"></i>Dashboard</span></a>
+          <li class="nav-item">
+            <a class="nav-link text" id="download-link" href="/download"><span class="text-dark fw-bold"><i class="fa-regular fa-circle-down me-2 "></i>Download Report</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text" id="profile-link" href="/profile"><span class="text-dark fw-bold"><i class="fa-regular fa-pen-to-square me-2"></i>Edit Profile</span></a>
+          </li>
+        </ul>
+
+        <form>
+          <a class="btn btn-outline-danger mx-2" href="/sign-out">Sign Out</a>
+        </form>
+
+        <%} %>
+      </div>
+    </div>
+  </nav>
+</header>
