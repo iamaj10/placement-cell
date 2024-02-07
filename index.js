@@ -36,7 +36,10 @@ app.use(
       maxAge: 1000 * 60 * 100,
     },
     store: MongoStore.create({
-      mongoUrl: "mongodb://127.0.0.1:27017/placement_cell",
+      mongoUrl:
+        "mongodb+srv://dbUser:dbUserPassword@atlascluster.nesbr6t.mongodb.net/?retryWrites=true&w=majority",
+      //in memory db
+      // "mongodb://localhost:27017/placement_cell",
       autoRemove: "disabled",
     }),
     function(err) {

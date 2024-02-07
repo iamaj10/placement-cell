@@ -3,10 +3,15 @@ require("dotenv").config();
 
 exports.connect = () => {
   mongoose
-    .connect("mongodb://localhost:27017/placement_cell", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(
+      //in memory db
+      // "mongodb://localhost:27017/placement_cell",
+      "mongodb+srv://dbUser:dbUserPassword@atlascluster.nesbr6t.mongodb.net/?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
     .then(console.log("DB CONNECTED SUCCESSFULLY"))
     .catch((err) => {
       console.log("DB CONNECTION FAILED");
