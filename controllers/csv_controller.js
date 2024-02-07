@@ -1,12 +1,12 @@
 const Student = require("../models/student");
 const fs = require("fs");
-const path = require("path");
+// const path = require("path");
 
 module.exports.downloadCSVReport = async function (req, res) {
   try {
     const allStudents = await Student.find({});
     let report =
-      "student Id, Student name,Student college, Student email, Student status, DSA Final Score, WebD Final Score, React Final Score, Interview date, Interview company, Interview result";
+      "Student Id, Student name,Student college, Student email, Student status, DSA Final Score, WebD Final Score, React Final Score, Interview date, Interview company, Interview result";
     let studentData1 = "";
 
     for (let student of allStudents) {
@@ -41,18 +41,32 @@ module.exports.downloadCSVReport = async function (req, res) {
       }
     }
 
-    const csvFile = fs.writeFile(
-      "uploads/studentsReport.csv",
-      report,
-      function (err, data) {
-        if (err) {
-          console.log(err);
-          return res.redirect("back");
-        }
-        req.flash("success", "successfully downloaded CSV report!");
-        return res.download("uploads/studentsReport.csv");
+    const filePath = "downloads/studentsReport.csv";
+
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        // File doesn't exist, create it.
+        fs.writeFile(filePath, report, (err) => {
+          if (err) {
+            console.error(`Error creating file: ${err}`);
+          } else {
+            console.log(`File created: ${filePath}`);
+            req.flash("success", "Successfully downloaded CSV report!");
+            return res.download(filePath);
+          }
+        });
+      } else {
+        // File exists, proceed with writing.
+        const csvFile = fs.writeFile(filePath, report, function (err, data) {
+          if (err) {
+            console.log(err);
+            return res.redirect("back");
+          }
+          req.flash("success", "Successfully downloaded CSV report!");
+          return res.download(filePath);
+        });
       }
-    );
+    });
   } catch (err) {
     console.log(err);
   }
