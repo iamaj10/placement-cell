@@ -20,7 +20,7 @@ module.exports.editStudent = async (req, res) => {
     if (req.isAuthenticated()) {
       return res.render("edit_student", {
         title: "Edit Student",
-        studentDetails: student,
+        student_details: student,
       });
     }
 
@@ -99,7 +99,8 @@ module.exports.destroy = async (req, res) => {
       }
     }
 
-    await student.remove();
+    // await student.remove();
+    await Student.findByIdAndDelete(studentId);
     req.flash("success", "Student deleted!");
     return res.redirect("back");
   } catch (err) {
@@ -117,10 +118,10 @@ module.exports.update = async (req, res) => {
       name,
       college,
       batch,
-      dsaScore,
-      reactScore,
-      webdevScore,
-      placementStatus,
+      dsa_score,
+      react_score,
+      webdev_score,
+      placement_status,
     } = req.body;
 
     if (!student) {
@@ -131,10 +132,10 @@ module.exports.update = async (req, res) => {
     student.name = name;
     student.college = college;
     student.batch = batch;
-    student.dsaScore = dsaScore;
-    student.reactScore = reactScore;
-    student.webdevScore = webdevScore;
-    student.placementStatus = placementStatus;
+    student.dsa_score = dsa_score;
+    student.react_score = react_score;
+    student.webdev_score = webdev_score;
+    student.placement_status = placement_status;
 
     await student.save();
     req.flash("success", "Student updated!");
