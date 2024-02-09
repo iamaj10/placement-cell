@@ -1,4 +1,4 @@
-require("./config/database").connect();
+const dbConfig = require("./config/database");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -14,6 +14,8 @@ const passportLocal = require("./config/passport-local-strategy");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
+
+dbConfig.connect();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
